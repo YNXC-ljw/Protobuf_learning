@@ -1,0 +1,16 @@
+#include <iostream>
+#include "contacts.pb.h"
+
+int main()
+{
+    std::string people_str;
+    {
+        // 对联系人的信息使用 PB 进行序列化，并将结果打印出来
+        contacks::PeopleInfo people;
+        
+    }
+
+
+    // 对序列化后的结果使用 PB 进行反序列化，并将结果打印出来
+    return 0;
+}
