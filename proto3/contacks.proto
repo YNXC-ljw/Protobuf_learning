@@ -1,0 +1,41 @@
+// 首行：语法指定行
+syntax = "proto3";
+package contacks2;
+
+message PeopleInfo
+{
+    string name = 1;  // 姓名
+    int32 age = 2;    // 年龄
+    
+    message Phone{
+    string number = 1;
+    }
+    repeated Phone phone = 3; // 电话信息
+}
+
+
+
+
+
+
+
+
+////////////////////////////////////*通讯录01版本*///////////////////////////
+// import "phone.proto";
+
+// // message Phone{
+// //     string number = 1;
+// // }
+
+// // 定义联系人信息
+// message PeopleInfo
+// {
+//     string name = 1;  // 姓名
+//     int32 age = 2;    // 年龄
+    
+//     // message Phone{
+//     // string number = 1;
+//     // }
+//     // repeated string phone_number = 3; 任选一种即可
+//     repeated phone.Phone phone = 3; 
+// }
