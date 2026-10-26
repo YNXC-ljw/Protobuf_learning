@@ -1,19 +1,28 @@
 // 首行：语法指定行
 syntax = "proto3";
-package contacks2;
+package contacts2;
 
+// 定义联系人 Message
 message PeopleInfo
 {
     string name = 1;  // 姓名
     int32 age = 2;    // 年龄
     
     message Phone{
-    string number = 1;
+        string number = 1;
+        enum PhoneType{
+            MP = 0;  // 固定电话
+            TEL = 1; // 移动电话
+        }
+        PhoneType type = 2;
     }
     repeated Phone phone = 3; // 电话信息
 }
 
-
+// 通讯录 Message
+message Contacts{
+    repeated PeopleInfo contacts = 1;
+}
 
 
 

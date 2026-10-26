@@ -1,0 +1,14 @@
+// 首行：语法指定行
+syntax = "proto3";
+
+enum PhoneType{
+    MP = 0;
+    TEL = 1;
+}
+
+message Phone{
+    // enum PhoneType{
+    //     MP = 0;
+    //     TEL = 1;
+    // }
+}
