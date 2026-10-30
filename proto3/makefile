@@ -6,4 +6,4 @@ read:read.cc contacts.pb.cc
 
 .PHONY:clean
 clean:
-	rm -f write
+	rm -f write read

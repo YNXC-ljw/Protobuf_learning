@@ -2,6 +2,13 @@
 syntax = "proto3";
 package contacts2;
 
+import "google/protobuf/any.proto";
+
+message Address{
+    string home_address = 1; // 家庭地址
+    string unit_address = 2; // 单位地址
+}
+
 // 定义联系人 Message
 message PeopleInfo
 {
@@ -17,6 +24,7 @@ message PeopleInfo
         PhoneType type = 2;
     }
     repeated Phone phone = 3; // 电话信息
+    google.protobuf.Any data = 4; // 地址信息
 }
 
 // 通讯录 Message
