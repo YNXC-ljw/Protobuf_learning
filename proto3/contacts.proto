@@ -25,6 +25,14 @@ message PeopleInfo
     }
     repeated Phone phone = 3; // 电话信息
     google.protobuf.Any data = 4; // 地址信息
+
+    oneof other_contact {
+        // repeated string qq = 5; 不能使用repeated字段
+        string qq = 5;
+        string wechat = 6;
+    }
+
+    map<string,string> remark = 7; // 备注信息
 }
 
 // 通讯录 Message

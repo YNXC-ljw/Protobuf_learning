@@ -9,16 +9,19 @@ void PrintContacks(contacts2::Contacts& contact)
 {
     for(int i = 0;i < contact.contacts_size();i++)
     {
+        // 1.打印姓名年龄
         cout << "----------------联系人" << i + 1 << "---------------" << endl;
         const contacts2::PeopleInfo& people = contact.contacts(i);
         cout << "联系人姓名：" << people.name() << endl;
         cout << "联系人年龄：" << people.age() << endl;
+        // 2.打印电话
         for(int j = 0;j < people.phone_size();j++)
         {
             const contacts2::PeopleInfo_Phone& phone = people.phone(j);
             cout << "联系人电话" << j+1 << ":" << phone.number() ;
             cout << "   (" << phone.PhoneType_Name(phone.type()) << ")    " << endl;
         }
+        // 3.打印地址
         if(people.has_data() && people.data().Is<contacts2::Address>()){
             contacts2::Address address;
             people.data().UnpackTo(&address);
@@ -28,6 +31,26 @@ void PrintContacks(contacts2::Contacts& contact)
             if(!address.unit_address().empty()){
                 cout << "联系人单位地址：" << address.unit_address() << endl;
             }
+        }
+        // 4.打印其他联系方式
+        switch(people.other_contact_case()){
+            case contacts2::PeopleInfo::OtherContactCase::kQq:
+                cout << "联系人qq：" << people.qq() << endl;
+                break;
+            case  contacts2::PeopleInfo::OtherContactCase::kWechat:
+                cout << "联系人微信号：" << people.wechat() << endl;
+                break;
+            default:
+                cout << "没有此联系方式！" << endl;
+                break;
+        }
+        // 5.打印联系人备注
+        if(people.remark_size()){
+            cout << "备注信息: " << endl;
+        }
+        for(auto it = people.remark().cbegin();it != people.remark().cend();it++)
+        {
+            cout << "   " << it->first << ":" << it->second << endl;
         }
     }
 }
