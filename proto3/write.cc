@@ -40,11 +40,25 @@ void AddPeopleInfo(contacts2::PeopleInfo* people)
             break;
         case 2:
             phone->set_type(contacts2::PeopleInfo_Phone_PhoneType::PeopleInfo_Phone_PhoneType_TEL);
+            break;
         default:
             cout << "select error!" << endl;
             break;
         }
     }
+    // 添加联系人地址
+    contacts2::Address address;
+    cout << "请输入联系人家庭住址:";
+    string home_address;
+    getline(cin,home_address);
+    address.set_home_address(home_address);
+    cout << "请输入联系人单位地址:";
+    string unit_address;
+    getline(cin,unit_address);
+    address.set_unit_address(unit_address);
+    // Address->Any
+    people->mutable_data()->PackFrom(address);
+
     cout << "-----------添加联系⼈成功-----------" << endl;
 }
 int main()

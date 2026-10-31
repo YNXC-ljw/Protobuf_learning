@@ -19,6 +19,16 @@ void PrintContacks(contacts2::Contacts& contact)
             cout << "联系人电话" << j+1 << ":" << phone.number() ;
             cout << "   (" << phone.PhoneType_Name(phone.type()) << ")    " << endl;
         }
+        if(people.has_data() && people.data().Is<contacts2::Address>()){
+            contacts2::Address address;
+            people.data().UnpackTo(&address);
+            if(!address.home_address().empty()){
+                cout << "联系人家庭地址：" << address.home_address() << endl;
+            }
+            if(!address.unit_address().empty()){
+                cout << "联系人单位地址：" << address.unit_address() << endl;
+            }
+        }
     }
 }
 int main()
